@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.toast {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    max-width: 400px;
+    padding: 6px;
+    background: aliceblue;
+    color: #30313F;
+    border-radius: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, top 0.2s, visibility 0.2s;
+}
+
+.toast--visible {
+    top : 20px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.toast--success{
+    background-color: #41ee58;
+    color: #30313F;
+}
+
+.toast--error {
+    background-color: #EE4156;
+    color: aliceblue;
+}
