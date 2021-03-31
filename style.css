@@ -31,7 +31,6 @@ header p {
 
 
 .search-box {
-    width: max(180px, 10vw);
     margin-top: 2rem;
     display: grid;
     grid-template-columns: 5fr 1fr;
