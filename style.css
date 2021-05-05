@@ -5,6 +5,10 @@
     font-family: 'Poppins', sans-serif;
 }
 
+input:focus, button:focus {
+    outline: none;
+}
+
 body {
     background: #30313F;
     font-size: 93.75%;
@@ -12,7 +16,7 @@ body {
 
 header {
     background-color: #EE4156;
-    padding: 1rem 0rem;   
+    padding: 1rem 0rem;
 }
 
 header p {
@@ -22,13 +26,12 @@ header p {
     text-align: center;
 }
 
-.container{
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   flex-direction: column;
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
-
 
 .search-box {
     width: max(180px, 10vw);
@@ -41,21 +44,20 @@ header p {
 
 input {
     font-size: 1rem;
-    border-radius: 1.5rem 0 0 1.5rem  ;
+    border-radius: 1.5rem 0 0 1.5rem;
     border: none;
     padding: 0.5rem
 }
 
 input::placeholder {
     font-weight: 300;
-
 }
 
 .search-btn {
-    border-radius: 0 1.5rem 1.5rem 0 ;
+    border-radius: 0 1.5rem 1.5rem 0;
     width: 3rem;
     border: none;
-    background:  #EE4156;
+    background: #EE4156;
 }
 
 i {
@@ -65,18 +67,16 @@ i {
 
 .card {
     color: aliceblue;
-    margin:  0 auto;
+    margin: 0 auto;
     width: 85vw;
     padding: 1.5rem;
     border-radius: 0.5rem;
     background: #565870;
-
     margin-top: -0.5rem;
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.3s,margin-top 0.3s, visibility 0.2s;
+    transition: opacity 0.3s, margin-top 0.3s, visibility 0.2s;
 }
-
 
 .card img {
     width: 55vw;
@@ -97,6 +97,7 @@ i {
     justify-content: space-between;
     width: 90%;
 }
+
 .infos div p {
     margin-top: 7px;
 }
@@ -119,24 +120,25 @@ i {
 
 footer img {
     width: 2rem;
-    margin-top: 1rem ;
+    margin-top: 1rem;
 }
 
-.github{
+.github {
     margin-top: -0.5rem;
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.3s,margin-top 0.3s, visibility 0.2s;
+    transition: opacity 0.3s, margin-top 0.3s, visibility 0.2s;
 }
 
-.visible{
+.visible {
     margin-top: 1.5rem;
     opacity: 1;
     visibility: visible;
 }
+
 /* SMALL DEVICES - SMARTPHONES */
 
-@media screen and (min-width: 320px)  {
+@media screen and (min-width: 320px) {
     .card {
         display: flex;
         align-items: center;
@@ -145,86 +147,68 @@ footer img {
         gap: 1rem;
         width: 85vw;
     }
-
-
     .infos {
         text-align: center;
     }
-
-    .infos h2{
+    .infos h2 {
         font-size: 2rem;
     }
-
     .info h2 {
         margin-bottom: 10px;
     }
     .infos div {
         width: 90%;
     }
-
     .repos {
         text-align: center;
     }
-
 }
 
 /* SMALL DEVICES - TABLETS */
-@media screen and (min-width: 768px){
+
+@media screen and (min-width: 768px) {
     .card {
         width: min(700px, 90vw);
         display: grid;
         grid-template-columns: 0.3fr 1fr 0.3fr;
     }
-
-
     header p {
         font-size: 3rem;
     }
-
-    .card img  {
+    .card img {
         max-width: 160px;
     }
     .infos {
         text-align: left;
     }
-
     .infos div {
-        width: min(220px ,80%);
-
+        width: min(220px, 80%);
         margin: 0;
     }
-
     .repos {
         text-align: left;
     }
 }
-/* MEDIUM DEVICES - TABLETS & DESKTOPS */
-@media screen and (min-width: 960px){
 
+/* MEDIUM DEVICES - TABLETS & DESKTOPS */
+
+@media screen and (min-width: 960px) {
     .card {
         width: min(700px, 75vw);
         grid-template-columns: 0.4fr 1fr 0.3fr;
     }
-
     .infos div {
-        width: min(220px ,70%);
+        width: min(220px, 70%);
     }
-
 }
-@media screen and (min-width: 1280px){
 
+@media screen and (min-width: 1280px) {
     .card {
-        width: min(800px,55vw);
+        width: min(800px, 55vw);
         grid-template-columns: 0.4fr 1fr 1fr;
     }
-
     .infos div {
         justify-content: space-between;
-        width: min(220px ,85% );
+        width: min(220px, 85%);
     }
-
 }
-
-
-
-
