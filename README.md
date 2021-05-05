@@ -1,2 +1,2 @@
 # github Profile
-https://github-profile-ten.vercel.app/
+https://practical-curie-b4e5f7.netlify.app
