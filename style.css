@@ -2,7 +2,13 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     font-family: 'Poppins', sans-serif;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .2s ease-in-out;
 }
 
 input:focus, button:focus {
@@ -34,15 +40,14 @@ header p {
 }
 
 .search-box {
-    width: max(180px, 10vw);
     margin-top: 2rem;
-    display: grid;
-    grid-template-columns: 5fr 1fr;
+    display: flex;
     align-self: center;
     justify-self: center;
 }
 
 input {
+    width: 100%;
     font-size: 1rem;
     border-radius: 1.5rem 0 0 1.5rem;
     border: none;
@@ -134,6 +139,21 @@ footer img {
     margin-top: 1.5rem;
     opacity: 1;
     visibility: visible;
+}
+
+::-webkit-scrollbar {
+    width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+    opacity: 0;
+    background-color: #12121b;
+}
+
+::-webkit-scrollbar-thumb {
+    opacity: 0;
+    background-color: #3f4153;
+    border-radius: 2px;
 }
 
 /* SMALL DEVICES - SMARTPHONES */
