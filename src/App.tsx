@@ -111,7 +111,10 @@ function App() {
               <p className="z-10  relative mt-16 mb-8 font-bold text-xl text-white">
                 {data?.login}
               </p>
-              <img
+              <motion.img
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, type: "spring", bounce: 0 }}
                 src={data?.avatar_url}
                 alt="avatar"
                 className="rounded-full w-52 h-52 border-[#7D5DD8] border-2 z-10  relative select-none"
