@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import { IconBrandGithub, IconNotebook, IconUsers } from "@tabler/icons";
 import axios from "axios";
-import card from "../public/gradient.svg";
-import { IconNotebook, IconUsers, IconBrandGithub } from "@tabler/icons";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import card from "../public/gradient.svg";
 
 interface IFormInput {
   search: string;
@@ -35,8 +35,6 @@ const schema = yup
 
 function App() {
   const date = new Date();
-  const getTime = date.getTime();
-  const [userNames, setUserNames] = useState<string>("");
   const [data, setData] = useState<IRepos | null>(null);
 
   const {
@@ -65,7 +63,7 @@ function App() {
   return (
     <div
       style={{
-        backgroundImage: "url(../public/pattern.png)",
+        backgroundImage: "url(/public/pattern.png)",
       }}
       className="bg-repeat w-full min-h-screen flex flex-col items-center justify-center bg-slate-100 dark:bg-[#131319]"
     >
@@ -107,7 +105,7 @@ function App() {
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, type: "spring", bounce: 0 }}
-            className="flex flex-col items-center bg-black max-w-[400px] w-11/12 h-[650px] border-2 border-[#7D5DD8] rounded-xl relative"
+            className="flex flex-col items-center bg-[#252538] max-w-[400px] w-11/12 h-[650px] border-2 border-[#7D5DD8] rounded-xl relative"
           >
             <div className="flex flex-col w-full rounded-t-lg h-64 relative items-center justify-center font-outfit">
               <p className="z-10  relative mt-16 mb-8 font-bold text-xl text-white">
