@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import card from "../public/gradient.svg";
+import styles from "./styles/Home.module.scss";
 
 interface IFormInput {
   search: string;
@@ -65,7 +66,7 @@ function App() {
       style={{
         backgroundImage: "url(/public/pattern.png)",
       }}
-      className="bg-repeat w-full min-h-screen flex flex-col items-center justify-center bg-slate-100 dark:bg-[#131319]"
+      className={styles.containerImage}
     >
       {data === null ? (
         <motion.form
