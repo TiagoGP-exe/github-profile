@@ -64,7 +64,7 @@ function App() {
   return (
     <div
       style={{
-        backgroundImage: "url(/public/pattern.png)",
+        backgroundImage: "url(/pattern.png)",
       }}
       className={styles.containerImage}
     >
@@ -82,7 +82,7 @@ function App() {
           <input
             {...register("search", { required: true })}
             type="text"
-            className="h-18 py-2 px-4 bg-[#0B0B0F] rounded-l-lg focus:outline-0 font-outfit text-white"
+            className="h-18 py-2 px-4 bg-[#0B0B0F] rounded-l-md focus:outline-0 font-outfit text-white"
             placeholder="Username"
             autoFocus
           />
