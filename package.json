@@ -11,7 +11,9 @@
   "dependencies": {
     "@hookform/resolvers": "^2.9.10",
     "@tabler/icons": "^1.108.0",
+    "@types/chroma-js": "^2.1.4",
     "axios": "^1.1.3",
+    "chroma-js": "^2.4.2",
     "framer-motion": "^7.6.2",
     "react": "^18.2.0",
     "react-copy-to-clipboard": "^5.1.0",

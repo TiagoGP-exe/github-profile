@@ -1,12 +1,17 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { IconBrandGithub, IconNotebook, IconUsers } from "@tabler/icons";
+import {
+  IconBrandGithub,
+  IconNotebook,
+  IconReload,
+  IconUsers,
+} from "@tabler/icons";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import card from "../public/gradient.svg";
-import styles from "./styles/Home.module.scss";
+import card from "/gradient.svg";
+import background from "/pattern.png";
 
 interface IFormInput {
   search: string;
@@ -35,14 +40,12 @@ const schema = yup
   .required();
 
 function App() {
-  const date = new Date();
   const [data, setData] = useState<IRepos | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     handleSubmit,
     formState: { errors },
-    setValue,
-    getValues,
     setError,
     reset,
     register,
@@ -51,30 +54,40 @@ function App() {
   });
 
   const onSubmit = async (data: IFormInput) => {
-    const { data: githubData } = await axios.get(
-      `https://api.github.com/users/${data.search}`
-    );
+    try {
+      setIsLoading(true);
+      const { data: githubData } = await axios.get(
+        `https://api.github.com/users/${data.search}`
+      );
 
-    const result: IRepos = githubData;
-    const { data: githubRepo } = await axios.get(result.repos_url);
+      const result: IRepos = githubData;
+      const { data: githubRepo } = await axios.get(result.repos_url);
 
-    setData({ ...result, repos: githubRepo.reverse().slice(0, 3) });
+      setData({ ...result, repos: githubRepo.reverse().slice(0, 3) });
+    } catch (error) {
+      setError("search", {
+        type: "manual",
+        message: "User not found",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <div
       style={{
-        backgroundImage: "url(/pattern.png)",
+        backgroundImage: `url(${background})`,
       }}
-      className={styles.containerImage}
+      className="flex flex-col w-full min-h-screen justify-center items-center "
     >
       {data === null ? (
         <motion.form
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, type: "spring", bounce: 0 }}
+          transition={{ duration: 1, type: "spring", bounce: 0 }}
           onSubmit={handleSubmit(onSubmit)}
-          className="flex items-center justify-center border-2 rounded-lg border-[#7D5DD8] relative"
+          className={`flex items-center justify-center border-[0.2rem] rounded-lg border-[#7D5DD8] relative h-14`}
         >
           <div className="text-[#7D5DD8] absolute -top-12">
             <IconBrandGithub size={52} stroke={1.5} />
@@ -82,7 +95,7 @@ function App() {
           <input
             {...register("search", { required: true })}
             type="text"
-            className="h-18 py-2 px-4 bg-[#0B0B0F] rounded-l-md focus:outline-0 font-outfit text-white"
+            className="h-full py-2 px-4 bg-[#0B0B0F] rounded-l-md focus:outline-0 font-outfit text-white"
             placeholder="Username"
             autoFocus
           />
@@ -91,11 +104,13 @@ function App() {
               {errors.search.message}
             </p>
           )}
-          <div className="bg-[#7D5DD8] ">
+          <div className="font-syne h-14 w-full bg-[#7D5DD8] rounded-r-md">
             <button
               type="submit"
-              className="font-syne py-2 px-4 bg-[#7D5DD8] transition-all duration-200 ease-in-out font-semibold text-white rounded-tr-sm rounded-br-sm active:scale-90"
+              disabled={isLoading}
+              className="flex items-center gap-2 disabled:text-[#5c42a6]  font-syne h-full w-full px-6 rounded-lgtransition-all duration-200 ease-in-out font-semibold text-white rounded-tr-sm rounded-br-sm active:scale-90 "
             >
+              {isLoading && <IconReload size={18} className="animate-spin" />}
               SEARCH
             </button>
           </div>
@@ -103,9 +118,9 @@ function App() {
       ) : (
         <>
           <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, type: "spring", bounce: 0 }}
+            initial={{ opacity: 0, scale: 0, translateY: 100, skewY: 10 }}
+            animate={{ opacity: 1, scale: 1, translateY: 0, skewY: 0 }}
+            transition={{ duration: 1, type: "spring", bounce: 0 }}
             className="flex flex-col items-center bg-[#252538] max-w-[400px] w-11/12 h-[650px] border-2 border-[#7D5DD8] rounded-xl relative"
           >
             <div className="flex flex-col w-full rounded-t-lg h-64 relative items-center justify-center font-outfit">
@@ -113,9 +128,9 @@ function App() {
                 {data?.login}
               </p>
               <motion.img
-                initial={{ opacity: 0, scale: 0.5 }}
+                initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, type: "spring", bounce: 0 }}
+                transition={{ duration: 1, type: "spring", bounce: 0.5 }}
                 src={data?.avatar_url}
                 alt="avatar"
                 className="rounded-full w-52 h-52 border-[#7D5DD8] border-2 z-10  relative select-none"
