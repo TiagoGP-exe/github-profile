@@ -87,9 +87,9 @@ function App() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, type: "spring", bounce: 0 }}
           onSubmit={handleSubmit(onSubmit)}
-          className={`flex items-center justify-center border-[0.2rem] rounded-lg border-[#7D5DD8] relative h-14`}
+          className={`flex flex-col xs:flex-row justify-center items-stretch xs:items-center xs:justify-between border-[0.2rem] rounded-lg bg-[#7D5DD8] border-[#7D5DD8] relative h-24 xs:h-14 max-w-xs xs:max-w-sm w-11/12`}
         >
-          <div className="text-[#7D5DD8] absolute -top-12">
+          <div className="text-[#7D5DD8] absolute -top-14 lg:-top-12">
             <IconBrandGithub size={52} stroke={1.5} />
           </div>
           <input
@@ -99,21 +99,21 @@ function App() {
             placeholder="Username"
             autoFocus
           />
+
+          <button
+            type="submit"
+            disabled={isLoading}
+            className=" h-full  w-full flex justify-center items-center rounded-r-md hover:bg-[#7251cd] hover:bg-opacity-80 gap-2
+             transition all ease-out duration-200 font-syne text-lg font-semibold active:scale-90 active:bg-[#7D5DD8]"
+          >
+            {isLoading && <IconReload size={18} className="animate-spin" />}
+            SEARCH
+          </button>
           {errors.search && (
-            <p className="absolute text-red-500 text-sm font-bold -bottom-8">
+            <p className="absolute text-red-500 text-sm font-semibold -bottom-8 w-full left-0">
               {errors.search.message}
             </p>
           )}
-          <div className="font-syne h-14 w-full bg-[#7D5DD8] rounded-r-md">
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="flex items-center gap-2 disabled:text-[#5c42a6]  font-syne h-full w-full px-6 rounded-lgtransition-all duration-200 ease-in-out font-semibold text-white rounded-tr-sm rounded-br-sm active:scale-90 "
-            >
-              {isLoading && <IconReload size={18} className="animate-spin" />}
-              SEARCH
-            </button>
-          </div>
         </motion.form>
       ) : (
         <>
